@@ -6,7 +6,8 @@
 void GPIOInit(void);
 void NVICInit(void);
 void CANInit(void);
-void CAN_Interrupt(void);
+void CANTrans(void);
+void CANRecv(void);
 
 int main(void)
 {
@@ -18,30 +19,11 @@ int main(void)
   //CAN_Polling();
 
   /* CAN transmit at 500Kb/s and receive by interrupt in loopback mode */
-  CAN_Interrupt();
 
-	  CanRxMsg RxMessage;
-
-  RxMessage.StdId=0x00;
-  RxMessage.ExtId=0x00;
-  RxMessage.IDE=0;
-  RxMessage.DLC=0;
-  RxMessage.FMI=0;
   while (1)
   {
-	CAN_Receive(CAN1, CAN_FIFO0, &RxMessage);
-
-  if((RxMessage.ExtId==0x1234) && (RxMessage.IDE==CAN_ID_EXT)
-     && (RxMessage.DLC==8) )
-  {
-    GPIO_ResetBits(GPIOB,GPIO_Pin_6);
-		GPIO_SetBits(GPIOB,GPIO_Pin_7);
-  }
-  else
-  {
-    GPIO_SetBits(GPIOB,GPIO_Pin_6);
-		GPIO_ResetBits(GPIOB,GPIO_Pin_7);
-  }
+		CANTrans();
+		CANRecv();
   }
 }
 
@@ -123,7 +105,7 @@ void CANInit(void)
 	CAN_ITConfig(CAN1, CAN_IT_TME, ENABLE);
 }
 
-void CAN_Interrupt(void)
+void CANTrans(void)
 {
 
   CanTxMsg TxMessage;
@@ -145,5 +127,28 @@ void CAN_Interrupt(void)
   CAN_Transmit(CAN1, &TxMessage);
 	
 }
+void CANRecv(void)
+{
+	CanRxMsg RxMessage;
 
+  RxMessage.StdId=0x00;
+  RxMessage.ExtId=0x1234;
+  RxMessage.IDE=0;
+  RxMessage.DLC=8;
+  RxMessage.FMI=0;
+	
+	CAN_Receive(CAN1, CAN_FIFO0, &RxMessage);
+
+  if((RxMessage.ExtId==0x1234) && (RxMessage.IDE==CAN_ID_EXT)
+     && (RxMessage.DLC==8) )
+  {
+    GPIO_ResetBits(GPIOB,GPIO_Pin_6);
+		GPIO_SetBits(GPIOB,GPIO_Pin_7);
+  }
+  else
+  {
+    GPIO_SetBits(GPIOB,GPIO_Pin_6);
+		GPIO_ResetBits(GPIOB,GPIO_Pin_7);
+  }	
+}
 

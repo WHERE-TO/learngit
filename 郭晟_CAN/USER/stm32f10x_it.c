@@ -154,26 +154,5 @@ void SysTick_Handler(void)
 
 void USB_LP_CAN1_RX0_IRQHandler(void)
 {
-  CanRxMsg RxMessage;
 
-  RxMessage.StdId=0x00;
-  RxMessage.ExtId=0x00;
-  RxMessage.IDE=0;
-  RxMessage.DLC=0;
-  RxMessage.FMI=0;
-  //RxMessage.Data[0]=0x00;
-
-  CAN_Receive(CAN1, CAN_FIFO0, &RxMessage);
-
-  if((RxMessage.ExtId==0x1234) && (RxMessage.IDE==CAN_ID_EXT)
-     && (RxMessage.DLC==8) )
-  {
-    GPIO_ResetBits(GPIOB,GPIO_Pin_6);
-		GPIO_SetBits(GPIOB,GPIO_Pin_7);
-  }
-  else
-  {
-    GPIO_SetBits(GPIOB,GPIO_Pin_6);
-		GPIO_ResetBits(GPIOB,GPIO_Pin_7);
-  }
 }
