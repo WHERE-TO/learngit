@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<JScopeProject>
+    <FileVersion major="1" minor="1" />
+    <Project>
+        <Configuration>
+            <JLink>
+                <Options IsRTTSession="0" IsRTTWithTimeStamp="1" SamplingPeriod="20000" Connection="1" SerialNo="0" IP="" TargetDevice="Cortex-M3" TargetInterface="SWD" InterfaceSpeed="4000" />
+            </JLink>
+            <ElfFile Name="F:\RobotMaster\Embedded_software\Project\F1\MOTOR_stm32f103c8\Project\Objects\STM32F103C.axf" />
+            <DataFile Name="" />
+            <RawFile Name="" />
+            <Scope>
+                <Options TimeResolutionUs="1000000" />
+            </Scope>
+        </Configuration>
+        <Windows>
+            <Graph Show="1" />
+            <Watch Show="1" />
+        </Windows>
+        <SelectedSymbols>
+            <Symbol>
+                <Options Name="ECODE_CNT1" Address="0x20000004" Type="int" TypeID="12" Size="4" GraphColorRed="255" GraphColorGreen="215" GraphColorBlue="0" YMinSampled="1" YMaxSampled="65532" YAvgSampled="30580" Offset="4" ShowInGraph="1" YOffset="200" IsAutoConfig="1" YResolution="50000" MaxValue="100000" File="..\System\timer\timer.c" Scope="0" DrawStyle="0" />
+            </Symbol>
+            <Symbol>
+                <Options Name="ECODE_CNT2" Address="0x20000008" Type="int" TypeID="12" Size="4" GraphColorRed="0" GraphColorGreen="255" GraphColorBlue="0" YMinSampled="1" YMaxSampled="65526" YAvgSampled="30572" Offset="8" ShowInGraph="1" YOffset="200" IsAutoConfig="1" YResolution="50000" MaxValue="100000" File="..\System\timer\timer.c" Scope="0" DrawStyle="0" />
+            </Symbol>
+            <Symbol>
+                <Options Name="ECODE_CNTx" Address="0x2000000C" Type="int" TypeID="12" Size="4" GraphColorRed="0" GraphColorGreen="0" GraphColorBlue="255" YMinSampled="-1083" YMaxSampled="1634" YAvgSampled="77" Offset="12" ShowInGraph="1" YOffset="200" IsAutoConfig="1" YResolution="1000" MaxValue="2000" File="..\System\timer\timer.c" Scope="0" DrawStyle="0" />
+            </Symbol>
+            <Symbol>
+                <Options Name="test" Address="0x20000018" Type="int" TypeID="12" Size="4" GraphColorRed="160" GraphColorGreen="32" GraphColorBlue="240" YMinSampled="-1080" YMaxSampled="1629" YAvgSampled="141" Offset="16" ShowInGraph="1" YOffset="200" IsAutoConfig="1" YResolution="1000" MaxValue="2000" File="..\System\timer\timer.c" Scope="0" DrawStyle="0" />
+            </Symbol>
+            <Symbol>
+                <Options Name="plus" Address="0x20000000" Type="ushort" TypeID="7" Size="2" GraphColorRed="255" GraphColorGreen="0" GraphColorBlue="0" YMinSampled="0" YMaxSampled="1000" YAvgSampled="497" Offset="20" ShowInGraph="1" YOffset="200" IsAutoConfig="1" YResolution="200" MaxValue="1074" File="..\User\main.c" Scope="0" DrawStyle="0" />
+            </Symbol>
+        </SelectedSymbols>
+    </Project>
+</JScopeProject>
